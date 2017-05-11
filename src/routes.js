@@ -9,6 +9,10 @@ function routesConfig($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/app/dashboard');
 
   $stateProvider
+    .state('login', {
+      url: '/login',
+      component: 'loginCom'
+    })
     .state('app', {
       url: '/app',
       component: 'homeCom'
@@ -21,6 +25,25 @@ function routesConfig($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
+/* ------------------------------- Stock  ------------------------------- */
+    .state('app.stock', {
+      url: '/stock',
+      views: {
+        mainContent: {
+          template: '<div ui-view="mainContent"></div>'
+        }
+      }
+    })
+    .state('app.stock.new', {
+      url: '/new',
+      views: {
+        mainContent: {
+          component: 'stockNewCom'
+        }
+      }
+    })
+
     .state('app.sample', {
       url: '/sample',
       views: {

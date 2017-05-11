@@ -1026,7 +1026,7 @@ var App = function() {
 
 jQuery(document).ready(function() {    
    App.init(); // init metronic core componets
-   console.log("gggg");
+   // console.log("gggg");
 });
 
 
@@ -1534,7 +1534,7 @@ var QuickSidebar = function () {
 
     jQuery(document).ready(function() {    
        QuickSidebar.init(); // init metronic core componets
-       console.log("menu-toggler");
+       // console.log("menu-toggler");
     });
 
 
@@ -1600,10 +1600,10 @@ var Layout = function () {
     var handleSidebarMenuActiveLink = function (mode, el, $state) {
         var url = location.hash.toLowerCase();
         var menu = $('.page-sidebar-menu');
-        console.log(menu);
-        console.log(menu.hasClass('page-sidebar-menu-hover-submenu'));
-        console.log('el');
-        console.log(el);
+        // console.log(menu);
+        // console.log(menu.hasClass('page-sidebar-menu-hover-submenu'));
+        // console.log('el');
+        // console.log(el);
 
         if (mode === 'click' || mode === 'set') {
             el = $(el);
