@@ -28,5 +28,13 @@ function routesConfig($stateProvider, $urlRouterProvider) {
           component: 'sampleCom'
         }
       }
+    })
+    .state('app.prescription', {
+        url: '/prescription',
+        views: {
+            mainContent: {
+                component: 'prescriptionCom'
+            }
+        }
     });
 }
