@@ -1,0 +1,129 @@
+<div class="container">
+
+    <div class="page-header">
+        <h2 class="text-info">Drug Dispense</h2>
+    </div>
+    <div class="well well-lg">
+        <div class="container-fluid">
+
+
+            <div class="page-header">
+                <h3 class="text-info">Search Prescription</h3>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Prescription ID</label>
+                            <input  class="form-control" ng-model="search.prescriptionId" id="patientId">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Doctor Name</label>
+                            <input class="form-control" ng-model="search.doctorName" id="docName">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Patient Name</label>
+                            <input class="form-control" ng-model="search.patientName" id="patientName">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <div class="well well-lg"  ng-repeat="prescription in prescriptionArray | filter:search | filter: {isIssued: 'false' }" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered" id="data-table">
+
+
+
+                        <div class="col-md-12 ">
+                            <div class="form-group">
+                                <label>Prescription ID : {{prescription.prescriptionId}}</label>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label>Patient Name : </label>
+                                {{prescription.patientName}}
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label>Doctor Name  : </label>
+                                {{prescription.doctorName}}
+                            </div>
+
+                        </div>
+
+
+
+
+                        <tr>
+                            <th>Drug Name</th>
+                            <th>Time</th>
+                            <th>Quantity</th>
+                            <th>Duration</th>
+
+                        </tr>
+
+
+                        <tr ng-repeat="drug in prescription.medDuration">
+                            <td>{{drug.name}}</td>
+                            <td>{{drug.time}}</td>
+                            <td>{{drug.quentity}}</td>
+                            <td>{{drug.duration}}</td>
+
+
+                        </tr>
+
+
+                    </table>
+
+ <!--===========================-->
+
+        <div class="row">
+            <div class="col-md-12">
+                    <!--<button class="btn btn-success" id="issueDrug" ng-click="issueDrug(prescription)" data-toggle="modal" data-target="#myModal">Issue Drugs</button>-->
+
+                <button type="button" class="btn btn-md blue" data-animation="am-fade-and-slide-top" data-template-url="app/stock/template/category-add.html" bs-modal="modal" ng-click="issueDrug(prescription)">Issue Drugs</button>
+
+                </div>
+        </div>
+
+ <!--==========================-->
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
