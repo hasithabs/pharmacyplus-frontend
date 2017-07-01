@@ -189,7 +189,7 @@ angular
 
                         //get the type of the medicine in order to------------- calculate the quantity-------------
 
-                        if(type=="tablet" || type=="capsule"){  //----------------********************* TYPE of the tablet should be correct according to stock *********-----------//
+                        if(type=="Tablet" || type=="Capsule"){  //----------------********************* TYPE of the tablet should be correct according to stock *********-----------//
 
                             var dayValue = parseInt(drugs[x].time.split(" ")[0]);
                             var weeks = parseInt(drugs[x].duration.split(" ")[0]);
