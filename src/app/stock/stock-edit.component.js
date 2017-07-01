@@ -144,6 +144,10 @@ angular
         $log.log("self.stockEditForm");
         $log.log(self.stockEditForm);
 
+        if (Number(self.drugEdit.drugDangerLevel) > Number(self.drugEdit.drugReorderLevel)) {
+          sweetAlert("Error!", "Danger Level should be less than Reorder Level", "error");
+        }
+
         self.drugItemDB = {
           id: self.drugId,
           category: Number(self.drugEdit.selectedDrugCategory),

@@ -7,7 +7,8 @@ angular
         stockDrug: stockDrug,
         drugCategory: drugCategory,
         drugDosage: drugDosage,
-        drugFrequency: drugFrequency
+        drugFrequency: drugFrequency,
+        batch: batch
       };
 
       function stockDrug() {
@@ -70,6 +71,17 @@ angular
 
       function drugFrequency() {
         var url = SETTINGS.SITE_URL + '/drugfrequency';
+        return $resource(url, {}, {
+          get: {
+            method: 'GET',
+            isArray: false,
+            cancellable: true
+          }
+        });
+      }
+
+      function batch() {
+        var url = SETTINGS.SITE_URL + '/batches';
         return $resource(url, {}, {
           get: {
             method: 'GET',

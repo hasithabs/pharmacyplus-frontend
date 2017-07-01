@@ -6,7 +6,7 @@ angular
 // function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 function routesConfig($stateProvider, $urlRouterProvider) {
   // $locationProvider.html5Mode(true).hashPrefix('!'); //uncomment when running on server
-  $urlRouterProvider.otherwise('/app/dashboard');
+  $urlRouterProvider.otherwise('/app/stock/list');
 
   $stateProvider
     .state('login', {

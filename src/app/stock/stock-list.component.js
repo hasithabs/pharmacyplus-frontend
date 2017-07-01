@@ -19,7 +19,13 @@ angular
           self.drugs = response.content;
           $log.log("*********self.drugs********");
           $log.log(self.drugs);
+          for (var t = 0; t < self.drugs.length; t++) {
+            self.drugs[t].seen = false;
+            self.drugs[t].qty = 0;
+          }
+
           getPreviousNotifications();
+          getStockBatches();
           deferred.resolve(response);
         }, function (error) {
           $log.debug(error);
@@ -30,6 +36,32 @@ angular
       }
       getDrugs();
 
+      /**
+       * Get Drugs
+      */
+      function getStockBatches() {
+        var deferred = $q.defer();
+        StockSDK.getBatches().then(function (response) {
+          self.batches = response.content;
+          $log.log("*********self.batches********");
+          $log.log(self.batches);
+
+          for (var b = 0; b < self.batches.length; b++) {
+            for (var a = 0; a < self.drugs.length; a++) {
+              if (self.drugs[a].id === self.batches[b].stock_Id) {
+                console.log("gdgdgd");
+                self.drugs[a].qty += self.batches[b].quantity;
+              }
+            }
+          }
+          deferred.resolve(response);
+        }, function (error) {
+          $log.debug(error);
+          deferred.reject(error);
+        });
+
+        return deferred.promise;
+      }
 
       /**
        * Gets the previous notifications.
@@ -42,10 +74,6 @@ angular
           self.notifications = response.content;
           $log.log("*********self.notifications********");
           $log.log(self.notifications);
-
-          for (var t = 0; t < self.drugs.length; t++) {
-                self.drugs[t].seen = false;
-          }
 
           for (var k = 0; k < self.notifications.length; k++) {
             for (var l = 0; l < self.drugs.length; l++) {

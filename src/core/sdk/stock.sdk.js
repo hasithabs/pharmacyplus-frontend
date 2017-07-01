@@ -100,4 +100,15 @@ angular
         $log.debug('StockSDK:getDrugFrequencies');
         return deferred.promise;
       };
+
+      this.getBatches = function () {
+        var deferred = $q.defer();
+        StockAPI.batch().get().$promise.then(function (response) {
+          deferred.resolve(response);
+        }, function (error) {
+          deferred.reject(error);
+        });
+        $log.debug('StockSDK:getBatches');
+        return deferred.promise;
+      };
     });

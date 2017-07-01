@@ -8,7 +8,7 @@
     <div class="col-md-12">
       <!-- BEGIN EXAMPLE TABLE PORTLET-->
       <!-- table table-striped table-bordered table-hover -->
-      <table datatable="ng" dt-options="$ctrl.dtOptions" dt-column-defs="$ctrl.dtColumnDefs" class="table datatable-basic dataTable table-bordered table-hover no-footer hover col-xs-12">
+      <table datatable="ng" dt-options="$ctrl.dtOptions" dt-column-defs="$ctrl.dtColumnDefs" class="table datatable-basic dataTable table-bordered no-footer hover col-xs-12">
         <thead>
           <tr>
             <th>ID</th>
@@ -20,13 +20,14 @@
             <th>Danger level</th>
             <th>Reorder level</th>
             <th>Weight</th>
+            <th>Qty.</th>
             <!-- <th>Dosage</th> -->
             <!-- <th>Frequency</th> -->
             <th class="text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="drug in $ctrl.drugs">
+          <tr ng-class="{'stock-reorder': drug.qty <= drug.reorderlevel, 'stock-danger': drug.qty <= drug.dangerlevel}" ng-repeat="drug in $ctrl.drugs">
             <td>{{ drug.id }}</td>
             <td>{{ drug.name }}</td>
             <td>{{ drug.category.name }}</td>
@@ -36,10 +37,11 @@
             <td>{{ drug.dangerlevel }}</td>
             <td>{{ drug.reorderlevel }}</td>
             <td>{{ drug.weight }}</td>
+            <td>{{ drug.qty }}</td>
             <!-- <td>{{ drug.dosage.name }}</td> -->
             <!-- <td>{{ drug.frequency.name }} - {{ drug.frequency.desc }}</td> -->
             <td>
-              <div container=".content" placement="top-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs blue dropdown-toggle" >Actions
+              <div container=".content" placement="bottom-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs blue dropdown-toggle" >Actions
                 <i class="fa fa-angle-down"></i>
                 <!-- <button container=".content" placement="top-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs green dropdown-toggle"> Actions -->
                 <!-- </button> -->
