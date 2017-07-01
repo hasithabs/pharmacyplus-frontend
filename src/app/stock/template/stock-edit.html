@@ -34,13 +34,24 @@
               <label for="form_control_1">Drug Name</label>
             </div>
           </div>
+
           <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.drugEdit.selectedDrugType == '9999' && $ctrl.stockSubmitBtnClicked }">
+              <select name="drugType" ng-model="$ctrl.drugEdit.selectedDrugType" class="form-control" ng-focus="true" required>
+                <option value="9999" disabled>Please Select Type</option>
+                <option ng-repeat="type in $ctrl.drugTypeData" value="{{type.name}}">{{type.name}}</option>
+              </select>
+              <span ng-show="$ctrl.drugEdit.selectedDrugType == '9999' && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Type</label>
+            </div>
+          </div>
+          <!-- <div class="col-md-6">
             <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugType.$invalid && $ctrl.stockSubmitBtnClicked }">
               <input name="drugType" type="text" class="form-control" ng-model="$ctrl.drugEdit.drugType" required>
               <span ng-show="$ctrl.stockEditForm.drugType.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
               <label for="form_control_1">Drug Type</label>
             </div>
-          </div>
+          </div> -->
           <div class="col-md-6">
             <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugPrice.$invalid && $ctrl.stockSubmitBtnClicked }">
               <input name="drugPrice" type="number" class="form-control" ng-model="$ctrl.drugEdit.drugPrice" required>

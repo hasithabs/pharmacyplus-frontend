@@ -111,7 +111,7 @@ angular
         self.drugItemDB = {
           category: Number(self.drugNew.selectedDrugCategory),
           name: self.drugNew.drugName,
-          type: self.drugNew.drugType,
+          type: self.drugNew.selectedDrugType,
           price: self.drugNew.drugPrice,
           dangerlevel: Number(self.drugNew.drugDangerLevel),
           reorderlevel: Number(self.drugNew.drugReorderLevel),

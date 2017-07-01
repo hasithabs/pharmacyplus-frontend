@@ -10,6 +10,7 @@ angular
 
       self.drugEdit = [];
       self.drugEdit.selectedDrugCategory = '9999';
+      self.drugEdit.selectedDrugType = '9999';
 
       $timeout(function () {
         for (var i = angular.element('.form-body select').length - 1; i >= 0; i--) {
@@ -47,6 +48,19 @@ angular
         return deferred.promise;
       }
       getDrugCategories();
+
+      self.drugTypeData =
+      [{
+        name: "Tablet"
+      }, {
+        name: "Capsule"
+      }, {
+        name: "Spray"
+      }, {
+        name: "Liquid"
+      }, {
+        name: "Other"
+      }];
 
       /**
        * Get Drug Dosage
@@ -99,7 +113,7 @@ angular
 
           self.drugEdit.selectedDrugCategory = String(self.drugData.category.id);
           self.drugEdit.drugName = self.drugData.name;
-          self.drugEdit.drugType = self.drugData.type;
+          self.drugEdit.selectedDrugType = String(self.drugData.type);
           self.drugEdit.drugPrice = self.drugData.price;
           self.drugEdit.drugRemarks = self.drugData.remarks;
           self.drugEdit.drugDangerLevel = self.drugData.dangerlevel;
@@ -134,7 +148,7 @@ angular
           id: self.drugId,
           category: Number(self.drugEdit.selectedDrugCategory),
           name: self.drugEdit.drugName,
-          type: self.drugEdit.drugType,
+          type: self.drugEdit.selectedDrugType,
           price: self.drugEdit.drugPrice,
           dangerlevel: Number(self.drugEdit.drugDangerLevel),
           reorderlevel: Number(self.drugEdit.drugReorderLevel),
