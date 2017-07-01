@@ -23,24 +23,24 @@ angular
 
             //drug category
             $scope.quantity="";
-            $scope.drugArray =[
-                {
-                    prescriptionId:1,
-                    category:{"prescriptionId":1,"name":"pain killers"},
-                    name:'Penadol'
-                },
-                {
-                    prescriptionId:2,
-                    category:{"prescriptionId":1,"name":"pain killers"},
-                    name:'piriton'
-                },
-                {
-                    prescriptionId:3,
-                    category:{"prescriptionId":1,"name":"hart killers"},
-                    name:'aspine'
-                }
-
-            ];
+            // $scope.drugArray =[
+            //     {
+            //         prescriptionId:1,
+            //         category:{"prescriptionId":1,"name":"pain killers"},
+            //         name:'Penadol'
+            //     },
+            //     {
+            //         prescriptionId:2,
+            //         category:{"prescriptionId":1,"name":"pain killers"},
+            //         name:'piriton'
+            //     },
+            //     {
+            //         prescriptionId:3,
+            //         category:{"prescriptionId":1,"name":"hart killers"},
+            //         name:'aspine'
+            //     }
+            //
+            // ];
 
             //creating unique elemets for categoryArray
             $scope.CategoryArray = [];
@@ -184,7 +184,7 @@ angular
                    // alert('Manufacture date should be lesser than expier date');
 
                     SweetAlert.swal({
-                        title: "Manufacture date should be lesser than expier date",
+                        title: "Manufacture date should be lesser than expire date",
                         type: "error",
                         timer: 2000,
                         showConfirmButton: false
