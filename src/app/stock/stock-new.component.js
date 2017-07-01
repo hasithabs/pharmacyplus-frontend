@@ -9,6 +9,7 @@ angular
 
       self.drugNew = [];
       self.drugNew.selectedDrugCategory = '9999';
+      self.drugNew.selectedDrugType = '9999';
       // self.drugNew.selectedDosage = '9999';
       // self.drugNew.selectedFrequency = '9999';
 
@@ -42,6 +43,19 @@ angular
         return deferred.promise;
       }
       getDrugCategories();
+
+      self.drugTypeData =
+      [{
+        name: "Tablet"
+      }, {
+        name: "Capsule"
+      }, {
+        name: "Spray"
+      }, {
+        name: "Liquid"
+      }, {
+        name: "Other"
+      }];
 
       /**
        * Get Drug Dosage
@@ -164,6 +178,7 @@ angular
         self.drugItemDB = [];
         self.drugNew = [];
         self.drugNew.selectedDrugCategory = '9999';
+        self.drugNew.selectedDrugType = '9999';
         // self.drugNew.selectedDosage = '9999';
         // self.drugNew.selectedFrequency = '9999';
         self.stockSubmitBtnClicked = false;

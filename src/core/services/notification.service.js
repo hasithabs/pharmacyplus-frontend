@@ -4,7 +4,9 @@ angular
     function ($resource, SETTINGS) {
       // Public API
       var services = {
-        notificationData: notificationData
+        notificationData: notificationData,
+        notificationSeen: notificationSeen,
+        notificationUnseen: notificationUnseen
       };
 
       function notificationData() {
@@ -38,6 +40,17 @@ angular
         return $resource(url, {nid: '@id'}, {
           update: {
             method: 'PUT',
+            isArray: false,
+            cancellable: true
+          }
+        });
+      }
+
+      function notificationUnseen() {
+        var url = SETTINGS.SITE_URL + '/notification/unseen';
+        return $resource(url, {nid: '@id'}, {
+          get: {
+            method: 'GET',
             isArray: false,
             cancellable: true
           }

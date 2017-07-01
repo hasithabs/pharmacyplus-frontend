@@ -312,8 +312,8 @@
                     <div class="page-quick-sidebar">
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab"> Users
-                                    <span class="badge badge-danger">2</span>
+                                <a href="javascript:;" data-target="#quick_sidebar_tab_1" data-toggle="tab"> Notification
+                                    <span class="badge badge-danger">{{$root.newNotification.length}}</span>
                                 </a>
                             </li>
                         </ul>
@@ -322,104 +322,14 @@
                                 <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
                                     <h3 class="list-heading">Staff</h3>
                                     <ul class="media-list list-items">
-                                        <li class="media">
-                                            <div class="media-status">
-                                                <span class="badge badge-success">8</span>
-                                            </div>
-                                            <img class="media-object" src="/resources/images/theme/avatar3.jpg" alt="...">
+                                        <li class="media" ng-repeat="notification in $root.newNotification">
                                             <div class="media-body">
-                                                <h4 class="media-heading">Bob Nilson</h4>
-                                                <div class="media-heading-sub"> Project Manager </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <img class="media-object" src="/resources/images/theme/avatar1.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Nick Larson</h4>
-                                                <div class="media-heading-sub"> Art Director </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-status">
-                                                <span class="badge badge-danger">3</span>
-                                            </div>
-                                            <img class="media-object" src="/resources/images/theme/avatar4.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Deon Hubert</h4>
-                                                <div class="media-heading-sub"> CTO </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <img class="media-object" src="/resources/images/theme/avatar2.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Ella Wong</h4>
-                                                <div class="media-heading-sub"> CEO </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <h3 class="list-heading">Customers</h3>
-                                    <ul class="media-list list-items">
-                                        <li class="media">
-                                            <div class="media-status">
-                                                <span class="badge badge-warning">2</span>
-                                            </div>
-                                            <img class="media-object" src="/resources/images/theme/avatar6.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Lara Kunis</h4>
-                                                <div class="media-heading-sub"> CEO, Loop Inc </div>
-                                                <div class="media-heading-small"> Last seen 03:10 AM </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-status">
-                                                <span class="label label-sm label-success">new</span>
-                                            </div>
-                                            <img class="media-object" src="/resources/images/theme/avatar7.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Ernie Kyllonen</h4>
-                                                <div class="media-heading-sub"> Project Manager,
-                                                    <br> SmartBizz PTL </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <img class="media-object" src="/resources/images/theme/avatar8.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Lisa Stone</h4>
-                                                <div class="media-heading-sub"> CTO, Keort Inc </div>
-                                                <div class="media-heading-small"> Last seen 13:10 PM </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-status">
-                                                <span class="badge badge-success">7</span>
-                                            </div>
-                                            <img class="media-object" src="/resources/images/theme/avatar9.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Deon Portalatin</h4>
-                                                <div class="media-heading-sub"> CFO, H&D LTD </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <img class="media-object" src="/resources/images/theme/avatar10.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Irina Savikova</h4>
-                                                <div class="media-heading-sub"> CEO, Tizda Motors Inc </div>
-                                            </div>
-                                        </li>
-                                        <li class="media">
-                                            <div class="media-status">
-                                                <span class="badge badge-danger">4</span>
-                                            </div>
-                                            <img class="media-object" src="/resources/images/theme/avatar11.jpg" alt="...">
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Maria Gomez</h4>
-                                                <div class="media-heading-sub"> Manager, Infomatic Inc </div>
-                                                <div class="media-heading-small"> Last seen 03:10 AM </div>
+                                                <h4 class="media-heading">{{notification.name}}</h4>
+                                                <div class="media-heading-sub"></div>
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
-
                             </div>
                         </div>
                     </div>

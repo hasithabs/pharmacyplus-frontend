@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('stockListCom', {
     templateUrl: 'app/stock/template/stock-list.html',
-    controller: function ($log, $state, $q, $timeout, StockSDK, NotificationSDK, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions, blockUI, SweetAlert) {
+    controller: function ($rootScope, $log, $state, $q, $interval, StockSDK, NotificationSDK, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions, blockUI, SweetAlert, Notification) {
       var self = this;
       self.drugs = [];
 
@@ -19,7 +19,7 @@ angular
           self.drugs = response.content;
           $log.log("*********self.drugs********");
           $log.log(self.drugs);
-          getNotifications();
+          getPreviousNotifications();
           deferred.resolve(response);
         }, function (error) {
           $log.debug(error);
@@ -30,19 +30,25 @@ angular
       }
       getDrugs();
 
+
       /**
-       * Get Notification
-      */
-      function getNotifications() {
+       * Gets the previous notifications.
+       *
+       * @return     {object}  The previous notifications.
+       */
+      function getPreviousNotifications() {
         var deferred = $q.defer();
-        NotificationSDK.getNotifications().then(function (response) {
+        NotificationSDK.getPreNotifications().then(function (response) {
           self.notifications = response.content;
           $log.log("*********self.notifications********");
           $log.log(self.notifications);
 
+          for (var t = 0; t < self.drugs.length; t++) {
+                self.drugs[t].seen = false;
+          }
+
           for (var k = 0; k < self.notifications.length; k++) {
             for (var l = 0; l < self.drugs.length; l++) {
-              self.drugs[l].seen = false;
               if (self.notifications[k].stock.id === self.drugs[l].id) {
                 self.drugs[l].seen = true;
               }
@@ -56,7 +62,45 @@ angular
 
         return deferred.promise;
       }
-      $timeout(getNotifications(), 10000);
+
+      /**
+       * Gets the new notifications.
+       *
+       * @return     {object}  The new notifications.
+       */
+      self.tempNewNotification = [];
+      var nCount = 0;
+      function getNewNotificationsRealtime() {
+        var deferred = $q.defer();
+        NotificationSDK.getNewNotifications().then(function (response) {
+          $log.log(response);
+          $rootScope.newNotification = response.content;
+          if (nCount === 0) {
+            angular.copy($rootScope.newNotification, self.tempNewNotification);
+            if (self.tempNewNotification.length > 0) {
+              Notification.success('You have unread notification(s)');
+            }
+            nCount++;
+          }
+          console.log("$rootScope.newNotification");
+          console.log($rootScope.newNotification);
+          console.log("self.tempNewNotification");
+          console.log(self.tempNewNotification);
+          for (var c = 0; c < $rootScope.newNotification.length; c++) {
+            if (angular.isDefined(self.tempNewNotification[c]) && $rootScope.newNotification[c].id === self.tempNewNotification[c].id) {
+              continue;
+            }
+            Notification.success('You have unread notification(s)');
+          }
+          deferred.resolve(response);
+        }, function (error) {
+          $log.debug(error);
+          deferred.reject(error);
+        });
+
+        return deferred.promise;
+      }
+      // $interval(getNewNotificationsRealtime, 5000);
 
       self.language = {
         // "sEmptyTable": "Ingen tilgængelige data (prøv en anden søgning)",
@@ -132,7 +176,6 @@ angular
           });
       }
 
-
       /**
        * Edit Drug Item
        *
@@ -142,7 +185,6 @@ angular
         $log.log("id : " + id);
         $state.go('app.stock.edit', {id: id});
       }
-
 
       function toNotify(drugObj) {
         $log.log(drugObj);
@@ -167,6 +209,7 @@ angular
               self.drugs[n].seen = true;
             }
           }
+          nCount = 0;
           $log.log(response);
           deferred.resolve(response);
         }, function (error) {

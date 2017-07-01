@@ -2,14 +2,14 @@ angular
   .module('core.sdk')
   .service('NotificationSDK',
     function ($log, $q, NotificationAPI) {
-      this.getNotifications = function (notiId) {
+      this.getPreNotifications = function (notiId) {
         var deferred = $q.defer();
         NotificationAPI.notificationData().get({id: notiId}).$promise.then(function (response) {
           deferred.resolve(response);
         }, function (error) {
           deferred.reject(error);
         });
-        $log.debug('NotificationSDK:getNotifications');
+        $log.debug('NotificationSDK:getPreNotifications');
         return deferred.promise;
       };
 
@@ -32,6 +32,17 @@ angular
           deferred.reject(error);
         });
         $log.debug('NotificationSDK:updateNotificationSeen');
+        return deferred.promise;
+      };
+
+      this.getNewNotifications = function (notiId) {
+        var deferred = $q.defer();
+        NotificationAPI.notificationUnseen().get().$promise.then(function (response) {
+          deferred.resolve(response);
+        }, function (error) {
+          deferred.reject(error);
+        });
+        $log.debug('NotificationSDK:getNewNotifications');
         return deferred.promise;
       };
     });

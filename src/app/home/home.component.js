@@ -2,8 +2,11 @@ angular
   .module('app')
   .component('homeCom', {
     templateUrl: 'app/home/template/home.html',
-    controller: function () {
+    controller: function (NotificationCenter) {
+        NotificationCenter.getNewNotificationsRealtime();
       // var self = this;
+      // 
+      // NotificationCenter
 /*eslint-disable */
 
 
