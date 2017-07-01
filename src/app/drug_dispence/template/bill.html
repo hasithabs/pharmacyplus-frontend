@@ -1,0 +1,43 @@
+<div class="modal modal-bs" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="$hide()">×</button>
+                <h4 class="modal-title">Add Category</h4></div>
+            <div class="modal-body">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Drug Name</th>
+                        <th>Price ( Rs.)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr ng-repeat="text in msgArray">
+                        <td>{{text.drugName}}</td>
+                        <td>{{text.price}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <td style="font-family:Aharoni">Total Price</td>
+                        <td >{{billVal}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn grey" ng-click="$hide()">Close</button>
+                <button  type="button" class="btn blue" ng-click="printBill()">Print Bill</button>
+            </div>
+        </div>
+    </div>
+</div>

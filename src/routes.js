@@ -51,5 +51,27 @@ function routesConfig($stateProvider, $urlRouterProvider) {
           component: 'sampleCom'
         }
       }
+    })
+//---------------------------------------------batchHandle---------------------
+
+      .state('app.batchHandle', {
+        url: '/batchHandle',
+        views: {
+            mainContent: {
+                component: 'batchHandleCom'
+            }
+        }
+    })
+ //---------------------------------------------drug dispense---------------------
+.state('app.drugDispence', {
+        url: '/drugDispence',
+        views: {
+            mainContent: {
+                component: 'drugDispenceCom'
+            }
+        }
     });
+
+
+
 }

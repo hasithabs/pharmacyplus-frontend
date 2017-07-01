@@ -1,0 +1,282 @@
+<div class="container">
+
+    <div class="page-header">
+        <h2 class="text-info">Add New Batch</h2>
+    </div>
+    <div class="well well-lg">
+        <div class="container-fluid">
+            <div class="page-header">
+                <h4 class="text-info">Select Drug Category</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="col-md-3">
+                        <label>Drug Category</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <Select class="form-control" ng-model="drug.category" id="category"
+                                    ng-options="item as item for item in uniqueCategory "
+                                    ng-change="makeDrugName(drug.category)">
+                                <option value="" disabled="disabled" selected="selected">Please select Drug Category</option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="container-fluid">
+            <div class="page-header">
+                <h4 class="text-info">Add Received Drug</h4>
+            </div>
+
+            <div class="row">
+
+
+                <div class="col-md-12">
+
+                    <div class="col-md-3">
+                        <label>Drug Name</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <Select class="form-control" ng-model="drug.name" id="name"
+                                    ng-options="item as item for item in DrugNameArray"
+                                    ng-change="genarateRandomNumber()">
+                                <option value="" disabled="disabled" selected="selected">Please select Drug Name</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12">
+                    </br>
+
+                    <div class="col-md-3">
+                        <label>Batch No</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <input type="text" class="form-control" ng-model="batchNo" id="batchNo" disabled>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-12">
+                    </br>
+
+                    <div class="col-md-3">
+                        <label>Type</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <Select class="form-control" ng-model="drug.Type" id="Type">
+                                <option value="" disabled="disabled" selected="selected">Please select a type</option>
+                                <option value="Cartoon">Cartoons</option>
+                                <option value="Bundle">Bundle</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12" ng-show="drug.Type">
+                    </br>
+
+                    <div class="col-md-3">
+                        <label >Content</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <Select class="form-control" ng-model="drug.content" id="content" >
+                                <option value="" selected="selected">Select Content</option>
+                                <option value="Tablet">Tablets</option>
+                                <option value="Liquid">Liquid</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-12" ng-show="drug.content">
+                    </br>
+
+                    <div class="col-md-3">
+                        <label >Content Type</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <Select class="form-control" ng-model="drug.contentType" id="contentType"  >
+                                <option value="" selected="selected">Select Content Type</option>
+                                <option value="Bottle" ng-show="drug.content=='Liquid'">Bottles</option>
+                                <option value="Card" ng-show="drug.content=='Tablet'">Cards</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-md-12" ng-show="drug.contentType">
+                    </br>
+
+                    <div class="col-md-3">
+                        <label>Number Of {{drug.Type}}s</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <input type="number" class="form-control" ng-model="drug.countOne" id="countOne" min="0">
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12" ng-show="drug.contentType">
+                    </br>
+
+                    <div class="col-md-3">
+                        <label>Number Of {{drug.contentType}}s per {{drug.Type}}</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <input type="Number" class="form-control" ng-model="drug.countTwo" id="countTwo" min="0">
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12" ng-show="drug.contentType">
+                    </br>
+
+                    <div class="col-md-3">
+                        <label>Number Of {{drug.content}}s per {{drug.contentType}}</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <input type="Number" class="form-control" ng-model="drug.countThree" id="countThree">
+                            <label ng-show="drug.content=='Liquid'" style="font-style: italic; color: green;font-size:90% " min="0">Liquid measurement in mili liters(ml)</label>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row" ng-show="drug.contentType">
+                <div class="col-md-12">
+                    <div class="form-group col-md-6 ">
+                        </br>
+                        </br>
+                        <button class="btn btn-success" id="calculateQuantity" ng-click="calculateQuantity(drug)">Calculate Quantity</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="page-header">
+                <h3 class="text-info"></h3>
+            </div>
+
+
+
+            <div class="col-md-12">
+                </br>
+
+                <div class="col-md-3">
+                    <label>Quantity</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" ng-model="quantity" id="quantity" disabled >
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+                </br>
+
+                <div class="col-md-3">
+                    <label>Manufacture Date</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <input type="date" class="form-control" ng-model="drug.manufactureDate" id="manufactureDate">
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+                </br>
+
+                <div class="col-md-3">
+                    <label>Expired Date</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <input type="date" class="form-control" ng-model="drug.expiredDate" id="expiredDate">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group col-md-6 ">
+                        </br>
+                        </br>
+                        <button class="btn btn-success" id="addBatch" ng-click="addBatch(drug,quantity,batchNo)" >Add Batch </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+</div>
