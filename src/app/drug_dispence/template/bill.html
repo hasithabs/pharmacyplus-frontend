@@ -35,8 +35,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn grey" ng-click="$hide()">Close</button>
-                <button  type="button" class="btn blue" ng-click="printBill()">Print Bill</button>
+                <button type="button" class="btn grey" ng-click="$hide();updatePrescription(msgArray[0].prescription.prescriptionId)">Close</button>
+                <button  type="button" class="btn blue" ng-click="printBill();updatePrescription(msgArray[0].prescription.prescriptionId)">Print Bill</button>
             </div>
         </div>
     </div>
