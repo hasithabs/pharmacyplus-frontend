@@ -276,11 +276,11 @@ var App = function() {
             handleInput($(this));
         });        
 
-        $('.form-md-floating-label .form-control').each(function(){
-            if ($(this).val().length > 0) {
-                $(this).addClass('edited');
-            }
-        });
+        // $('.form-md-floating-label .form-control').each(function(){
+        //     if ($(this).val().length > 0) {
+        //         $(this).addClass('edited');
+        //     }
+        // });
     }
 
     // Handles custom checkboxes & radios using jQuery iCheck plugin
@@ -417,7 +417,7 @@ var App = function() {
         /*
           Hold dropdown on click  
         */
-        $('body').on('click', '.dropdown-menu.hold-on-click', function(e) {
+        $('body').on('click', '.dropdown-menu > .hold-on-click', function(e) {
             e.stopPropagation();
         });
     };

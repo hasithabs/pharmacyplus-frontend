@@ -1,0 +1,17 @@
+<div class="modal modal-bs" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="$hide()">×</button>
+        <h4 class="modal-title">Add Category</h4></div>
+      <div class="modal-body">
+        <span>Name</span>
+        <input name="newCategoryName" type="text" class="form-control" ng-model="$ctrl.newCategoryName">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn grey" ng-click="$hide()">Close</button>
+        <button ng-disabled="$ctrl.newCategoryName == '' || $ctrl.newCategoryName == null" type="button" class="btn blue" ng-click="$ctrl.onAddNewCategory(); $hide();">Add New</button>
+      </div>
+    </div>
+  </div>
+</div>

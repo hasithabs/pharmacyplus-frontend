@@ -43,6 +43,22 @@ function routesConfig($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.stock.list', {
+      url: '/list',
+      views: {
+        mainContent: {
+          component: 'stockListCom'
+        }
+      }
+    })
+    .state('app.stock.edit', {
+      url: '/edit/:id',
+      views: {
+        mainContent: {
+          component: 'stockEditCom'
+        }
+      }
+    })
 
     .state('app.sample', {
       url: '/sample',

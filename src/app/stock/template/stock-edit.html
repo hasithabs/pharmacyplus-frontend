@@ -1,0 +1,113 @@
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title hb-page-title"> Edit Stock
+  <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+
+<div class="content">
+
+  <!-- BEGIN SAMPLE FORM PORTLET-->
+  <div class="portlet light bordered">
+    <div class="portlet-title">
+      <div class="caption font-green">
+        <i class="icon-pin font-green"></i>
+        <span class="caption-subject bold uppercase">Edit {{$ctrl.drugData.name}} Drug</span>
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form role="form" name="$ctrl.stockEditForm">
+        <div class="form-body">
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.drugEdit.selectedDrugCategory == '9999' && $ctrl.stockSubmitBtnClicked }">
+              <select name="drugCategory" ng-model="$ctrl.drugEdit.selectedDrugCategory" class="form-control" ng-focus="true" required>
+                <option value="9999" disabled>Please Select Category</option>
+                <option ng-repeat="category in $ctrl.drugCategories" value="{{category.id}}">{{category.name}}</option>
+              </select>
+              <span ng-show="$ctrl.drugEdit.selectedDrugCategory == '9999' && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Category</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugName.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugName" type="text" class="form-control" ng-model="$ctrl.drugEdit.drugName" required>
+              <span ng-show="$ctrl.stockEditForm.drugName.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Name</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugType.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugType" type="text" class="form-control" ng-model="$ctrl.drugEdit.drugType" required>
+              <span ng-show="$ctrl.stockEditForm.drugType.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Type</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugPrice.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugPrice" type="number" class="form-control" ng-model="$ctrl.drugEdit.drugPrice" required>
+              <span ng-show="$ctrl.stockEditForm.drugPrice.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Price</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugRemarks.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugRemarks" type="text" class="form-control" ng-model="$ctrl.drugEdit.drugRemarks">
+              <span ng-show="$ctrl.stockEditForm.drugRemarks.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Remarks</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugDangerLevel.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugDangerLevel" type="number" class="form-control" ng-model="$ctrl.drugEdit.drugDangerLevel" required>
+              <span ng-show="$ctrl.stockEditForm.drugDangerLevel.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Danger Level</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugReorderLevel.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugReorderLevel" type="number" class="form-control" ng-model="$ctrl.drugEdit.drugReorderLevel" required>
+              <span ng-show="$ctrl.stockEditForm.drugReorderLevel.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Reorder Level</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockEditForm.drugWeight.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugWeight" type="text" class="form-control" ng-model="$ctrl.drugEdit.drugWeight" required>
+              <span ng-show="$ctrl.stockEditForm.drugWeight.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Weight</label>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.drugEdit.selectedDosage == '9999' && $ctrl.stockSubmitBtnClicked }">
+              <select name="drugDosage" ng-model="$ctrl.drugEdit.selectedDosage" class="form-control" >
+                <option value="9999" disabled>Please Select Dosage</option>
+                <option ng-repeat="dosage in $ctrl.drugDosages" value="{{dosage.id}}">{{dosage.name}}</option>
+              </select>
+              <span ng-show="$ctrl.drugEdit.selectedDosage == '9999' && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Dosage</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.drugEdit.selectedFrequency == '9999' && $ctrl.stockSubmitBtnClicked }">
+              <select name="drugFrequency" ng-model="$ctrl.drugEdit.selectedFrequency" class="form-control" >
+                <option value="9999" disabled>Please Select Frequency</option>
+                <option ng-repeat="frequency in $ctrl.drugFrequencies" value="{{frequency.id}}">{{frequency.name}} - {{frequency.desc}}</option>
+              </select>
+              <span ng-show="$ctrl.drugEdit.selectedFrequency == '9999' && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Frequency</label>
+            </div>
+          </div> -->
+
+          <div class="form-actions noborder">
+            <button type="button" ng-click="$ctrl.onEditDrugSubmit()" ng-disabled="$ctrl.isEditDrugProcessing" ng-class="{'processing': $ctrl.isEditDrugProcessing}" class="btn blue">Submit</button>
+            <button type="button" class="btn default">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+
+
+  </div>

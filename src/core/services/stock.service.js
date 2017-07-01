@@ -11,10 +11,25 @@ angular
       };
 
       function stockDrug() {
-        var url = SETTINGS.SITE_URL + '/stock';
-        return $resource(url, {}, {
+        var url = SETTINGS.SITE_URL + '/stock/:id';
+        return $resource(url, {did: '@id'}, {
+          get: {
+            method: 'GET',
+            isArray: false,
+            cancellable: true
+          },
           save: {
             method: 'POST',
+            isArray: false,
+            cancellable: true
+          },
+          update: {
+            method: 'PUT',
+            isArray: false,
+            cancellable: true
+          },
+          delete: {
+            method: 'DELETE',
             isArray: false,
             cancellable: true
           }
@@ -22,10 +37,20 @@ angular
       }
 
       function drugCategory() {
-        var url = SETTINGS.SITE_URL + '/drugcategory';
-        return $resource(url, {}, {
+        var url = SETTINGS.SITE_URL + '/drugcategory/:id';
+        return $resource(url, {id: '@id'}, {
           get: {
             method: 'GET',
+            isArray: false,
+            cancellable: true
+          },
+          save: {
+            method: 'POST',
+            isArray: false,
+            cancellable: true
+          },
+          delete: {
+            method: 'DELETE',
             isArray: false,
             cancellable: true
           }

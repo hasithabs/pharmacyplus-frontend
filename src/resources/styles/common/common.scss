@@ -13,3 +13,97 @@
 .processing {
   cursor: progress;
 }
+
+
+
+.dataTables_wrapper .dataTables_length {
+  float: left;
+  select {
+    margin-left: 18px;
+    @include bp(xxs) {
+      margin-left: 0;
+    }
+  }
+//   width: 25%;
+//   label {
+//    width: 100%;
+//   }
+}
+
+.dataTables_wrapper .dataTables_filter {
+  float: right;
+  // width: 55%;
+  // label {
+    // width: 100%;
+  // }
+  input {
+    padding: 0 0 0 10px;
+    margin-left: 18px;
+    @include bp(xxs) {
+      margin-left: 0;
+      width: 110px;
+    }
+  }
+  :after {
+    content: "\f002";
+    font-family: 'FontAwesome';
+    font-size: 12px;
+    display: inline-block;
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    margin-top: -6px;
+    color: #999999;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    @include bp(xxs) {
+      top: 65%;
+    }
+  }
+}
+
+.pagination > li > a, .pagination > li > span {
+  @include bp(xxs) {
+    min-width: 15px;
+  }
+}
+
+// .dataTables_scrollHeadInner {
+//   width: 100% !important;
+// }
+
+.dataTables_filter input,
+.dataTables_length select {
+  margin: 0% 0%;
+  border: 1px solid #ddd;
+}
+
+div.dataTables_length label {
+  @include bp(xxs) {
+    text-align: center;
+  }
+}
+
+
+
+.modal-backdrop.am-fade {
+  opacity: .8;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+.modal-bs {
+  top: 10%;
+}
+
