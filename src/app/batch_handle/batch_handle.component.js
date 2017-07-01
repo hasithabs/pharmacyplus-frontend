@@ -184,7 +184,7 @@ angular
                    // alert('Manufacture date should be lesser than expier date');
 
                     SweetAlert.swal({
-                        title: "Manufacture date should be lesser than expier date",
+                        title: "Manufacture date should be lesser than expire date",
                         type: "error",
                         timer: 2000,
                         showConfirmButton: false
