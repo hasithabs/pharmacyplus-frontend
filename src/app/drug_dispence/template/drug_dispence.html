@@ -114,8 +114,8 @@
             <div class="col-md-12">
                     <!--<button class="btn btn-success" id="issueDrug" ng-click="issueDrug(prescription)" data-toggle="modal" data-target="#myModal">Issue Drugs</button>-->
 
-                <butto type="button" class="btn btn-md blue" ng-click="issueDrug(prescription)">Issue Drugs</butto>
-                <button type="button" class="btn btn-md blue" data-animation="am-fade-and-slide-top" data-template-url="app/drug_dispence/template/bill.html" bs-modal="modal" >Show Bill</button>
+                <button ng-disabled="prescription.isClicked ? true : false" type="button" class="btn btn-md blue" ng-click="issueDrug(prescription); prescription.isClicked = true">Issue Drugs</button>
+                <button ng-disabled="prescription.isClicked ? false : true" type="button" class="btn btn-md blue" data-animation="am-fade-and-slide-top" data-template-url="app/drug_dispence/template/bill.html" bs-modal="modal" >Show Bill</button>
 
                 </div>
         </div>

@@ -62,7 +62,7 @@ angular
                     "doctorName" : "Dr.Yashvida Jayasekara",
                     "prescriptionId" : 999,
                     "patientName" : "GGWP",
-                    "isIssued" : "False",
+                    "isIssued" : "false",
                     "medDuration" : [
                         {
                             "duration" : "1 Week",
