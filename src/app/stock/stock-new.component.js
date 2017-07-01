@@ -130,7 +130,7 @@ angular
 
         $log.log(self.drugItemDB);
         // && self.drugNew.selectedDosage !== '9999' && self.drugNew.selectedFrequency !== '9999'
-        if (self.stockNewForm.$valid && self.drugNew.selectedDrugCategory !== '9999') {
+        if (self.stockNewForm.$valid && self.drugNew.selectedDrugCategory !== '9999' && self.drugNew.selectedDrugType !== '9999') {
           $log.log("New Drug created called");
 
           createDrug(self.drugItemDB);

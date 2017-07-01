@@ -166,7 +166,7 @@ angular
         }
 
         $log.log(self.drugItemDB);
-        if (self.stockEditForm.$valid && self.drugEdit.selectedDrugCategory !== '9999') {
+        if (self.stockEditForm.$valid && self.drugEdit.selectedDrugCategory !== '9999' && self.drugEdit.selectedDrugType !== '9999') {
           $log.log("Edit Drug updated called");
 
           editDrug(self.drugItemDB);
