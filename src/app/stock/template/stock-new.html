@@ -1,0 +1,118 @@
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title hb-page-title"> Add New Stock
+  <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+
+<div class="content">
+
+  <!-- BEGIN SAMPLE FORM PORTLET-->
+  <div class="portlet light bordered stock-manually">
+    <div class="portlet-title">
+      <div class="caption font-green">
+        <i class="icon-pin font-green"></i>
+        <span class="caption-subject bold uppercase">Add Drugs Manually</span>
+      </div>
+    </div>
+    <div class="portlet-body form">
+      <form role="form" name="$ctrl.stockNewForm">
+        <div class="form-body">
+          <div class="col-md-8">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.drugNew.selectedDrugCategory == '9999' && $ctrl.stockSubmitBtnClicked }">
+              <select name="drugCategory" ng-model="$ctrl.drugNew.selectedDrugCategory" class="form-control" ng-focus="true" required>
+                <option value="9999" disabled>Please Select Category</option>
+                <option ng-repeat="category in $ctrl.drugCategories" value="{{category.id}}">{{category.name}}</option>
+              </select>
+              <span ng-show="$ctrl.drugNew.selectedDrugCategory == '9999' && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Category</label>
+            </div>
+          </div>
+          <div class="col-md-4 item-new-add">
+            <button type="button" class="btn btn-md blue" data-animation="am-fade-and-slide-top" data-template-url="app/stock/template/category-add.html" bs-modal="modal">Add New</button>
+            <button type="button" class="btn btn-md red" ng-click="$ctrl.onRemoveCategory($ctrl.drugNew.selectedDrugCategory)" ng-disabled="$ctrl.drugNew.selectedDrugCategory === '9999' || $ctrl.drugNew.selectedDrugCategory === ''">Remove Selected</button>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockNewForm.drugName.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugName" type="text" class="form-control" ng-model="$ctrl.drugNew.drugName" required>
+              <span ng-show="$ctrl.stockNewForm.drugName.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Name</label>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockNewForm.drugType.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugType" type="text" class="form-control" ng-model="$ctrl.drugNew.drugType" required>
+              <span ng-show="$ctrl.stockNewForm.drugType.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Type</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockNewForm.drugPrice.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugPrice" type="number" class="form-control" ng-model="$ctrl.drugNew.drugPrice" required>
+              <span ng-show="$ctrl.stockNewForm.drugPrice.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Price</label>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockNewForm.drugRemarks.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugRemarks" type="text" class="form-control" ng-model="$ctrl.drugNew.drugRemarks">
+              <span ng-show="$ctrl.stockNewForm.drugRemarks.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Remarks</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockNewForm.drugDangerLevel.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugDangerLevel" type="number" class="form-control" ng-model="$ctrl.drugNew.drugDangerLevel" required>
+              <span ng-show="$ctrl.stockNewForm.drugDangerLevel.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Danger Level</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockNewForm.drugReorderLevel.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugReorderLevel" type="number" class="form-control" ng-model="$ctrl.drugNew.drugReorderLevel" required>
+              <span ng-show="$ctrl.stockNewForm.drugReorderLevel.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Reorder Level</label>
+            </div>
+          </div>
+
+          <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.stockNewForm.drugWeight.$invalid && $ctrl.stockSubmitBtnClicked }">
+              <input name="drugWeight" type="text" class="form-control" ng-model="$ctrl.drugNew.drugWeight" required>
+              <span ng-show="$ctrl.stockNewForm.drugWeight.$invalid && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Weight</label>
+            </div>
+          </div>
+
+          <!-- <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.drugNew.selectedDosage == '9999' && $ctrl.stockSubmitBtnClicked }">
+              <select name="drugDosage" ng-model="$ctrl.drugNew.selectedDosage" class="form-control" >
+                <option value="9999" disabled>Please Select Dosage</option>
+                <option ng-repeat="dosage in $ctrl.drugDosages" value="{{dosage.id}}">{{dosage.name}}</option>
+              </select>
+              <span ng-show="$ctrl.drugNew.selectedDosage == '9999' && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Dosage</label>
+            </div>
+          </div> -->
+
+          <!-- <div class="col-md-12">
+            <div class="form-group form-md-line-input form-md-floating-label" ng-class="{ 'has-error' : $ctrl.drugNew.selectedFrequency == '9999' && $ctrl.stockSubmitBtnClicked }">
+              <select name="drugFrequency" ng-model="$ctrl.drugNew.selectedFrequency" class="form-control" >
+                <option value="9999" disabled>Please Select Frequency</option>
+                <option ng-repeat="frequency in $ctrl.drugFrequencies" value="{{frequency.id}}">{{frequency.name}} - {{frequency.desc}}</option>
+              </select>
+              <span ng-show="$ctrl.drugNew.selectedFrequency == '9999' && $ctrl.stockSubmitBtnClicked" class="help-block help-block-error">This field is invalid.</span>
+              <label for="form_control_1">Drug Frequency</label>
+            </div>
+          </div> -->
+
+          <div class="col-md-12 form-actions noborder">
+            <button type="button" ng-click="$ctrl.onNewDrugSubmit()" ng-disabled="$ctrl.isNewDrugProcessing" ng-class="{'processing': $ctrl.isNewDrugProcessing}" class="btn blue">Submit</button>
+            <button type="button" class="btn default">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+
+  </div>

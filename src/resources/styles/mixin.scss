@@ -1,0 +1,88 @@
+/**
+ * Media query mixin
+ */
+@mixin bp($point) {
+	// Max width
+ 	@if $point == md {
+		@media screen and (max-width: 1200px) {
+			 @content;
+		}
+	}
+	@if $point == sm {
+	 	@media screen and (max-width: 992px){
+			@content;
+		}
+	}
+	@if $point == xs {
+	 	@media screen and (max-width: 768px){
+			@content;
+		}
+	}
+	@if $point == xxs {
+	 	@media screen and (max-width: 480px){
+			@content;
+		}
+	}
+	@if $point == xxxs {
+	 	@media screen and (max-width: 320px){
+			@content;
+		}
+	}
+
+	// Min width
+	@if $point == gtmd {
+		@media screen and (min-width: 1200px) {
+		 	@content;
+		}
+	}
+	@if $point == gtsm {
+	 	@media screen and (min-width: 992px){
+			@content;
+		}
+	}
+	@if $point == gtxs {
+	 	@media screen and (min-width: 768px){
+			@content;
+		}
+	}
+	@if $point == gtxxs {
+	 	@media screen and (min-width: 480px){
+			@content;
+		}
+	}
+	@if $point == gtxxxs {
+	 	@media screen and (min-width: 320px){
+			@content;
+		}
+	}
+
+	// Mobile
+	@if $point == smml {
+	 	@media screen and (max-width: 992px)
+	 	and (orientation: landscape) {
+			@content;
+		}
+	}
+	@if $point == xsml {
+	 	@media screen and (max-width: 768px)
+	 	and (orientation: landscape) {
+			@content;
+		}
+	}
+	@if $point == xxsml {
+	 	@media screen 
+	 	and (max-width: 667px)
+	 	and (min-width: 375px)
+	 	and (orientation: landscape) {
+			@content;
+		}
+	}
+	@if $point == xxsmp {
+	 	@media screen 
+	 	and (max-width: 667px)
+	 	and (min-width: 375px)
+	 	and (orientation: portrait) {
+			@content;
+		}
+	}
+}

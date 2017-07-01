@@ -1,0 +1,62 @@
+<!-- BEGIN PAGE TITLE-->
+<h1 class="page-title hb-page-title"> Drug List
+  <small></small>
+</h1>
+<!-- END PAGE TITLE-->
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <!-- BEGIN EXAMPLE TABLE PORTLET-->
+      <!-- table table-striped table-bordered table-hover -->
+      <table datatable="ng" dt-options="$ctrl.dtOptions" dt-column-defs="$ctrl.dtColumnDefs" class="table datatable-basic dataTable table-bordered table-hover no-footer hover col-xs-12">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Price(Rs.)</th>
+            <th>Remarks</th>
+            <th>Danger level</th>
+            <th>Reorder level</th>
+            <th>Weight</th>
+            <!-- <th>Dosage</th> -->
+            <!-- <th>Frequency</th> -->
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="drug in $ctrl.drugs">
+            <td>{{ drug.id }}</td>
+            <td>{{ drug.name }}</td>
+            <td>{{ drug.category.name }}</td>
+            <td>{{ drug.type }}</td>
+            <td>{{ drug.price }}</td>
+            <td>{{ drug.remarks }}</td>
+            <td>{{ drug.dangerlevel }}</td>
+            <td>{{ drug.reorderlevel }}</td>
+            <td>{{ drug.weight }}</td>
+            <!-- <td>{{ drug.dosage.name }}</td> -->
+            <!-- <td>{{ drug.frequency.name }} - {{ drug.frequency.desc }}</td> -->
+            <td>
+              <div container=".content" placement="top-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs blue dropdown-toggle" >Actions
+                <i class="fa fa-angle-down"></i>
+                <!-- <button container=".content" placement="top-right" data-animation="am-fade" bs-dropdown aria-haspopup="true" aria-expanded="false" class="btn btn-xs green dropdown-toggle"> Actions -->
+                <!-- </button> -->
+              </div>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a ng-hide="{{drug.seen}}" ng-click="$ctrl.toNotify(drug)"><i class="fa fa-paper-plane" aria-hidden="true"></i> Notify Low Qty.</a>
+                  <a ng-show="{{drug.seen}}" class="notification-done"><i class="fa fa-paper-plane green" aria-hidden="true"></i> Notified</a>
+                </li>
+                <li><a ng-click="$ctrl.toEdit(drug.id)"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></li>
+                <li><a ng-click="$ctrl.toDelete(drug.id)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+  </div>
+</div>

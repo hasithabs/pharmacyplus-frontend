@@ -1,6 +1,9 @@
+@import 'mixin.scss';
 @import 'common/common';
 
 @import 'theme/components-md.scss';
 @import 'theme/plugins-md.scss';
 @import 'theme/darkblue.scss';
 @import 'theme/layout.scss';
+
+@import 'stock/stock.scss';

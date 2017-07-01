@@ -276,11 +276,11 @@ var App = function() {
             handleInput($(this));
         });        
 
-        $('.form-md-floating-label .form-control').each(function(){
-            if ($(this).val().length > 0) {
-                $(this).addClass('edited');
-            }
-        });
+        // $('.form-md-floating-label .form-control').each(function(){
+        //     if ($(this).val().length > 0) {
+        //         $(this).addClass('edited');
+        //     }
+        // });
     }
 
     // Handles custom checkboxes & radios using jQuery iCheck plugin
@@ -417,7 +417,7 @@ var App = function() {
         /*
           Hold dropdown on click  
         */
-        $('body').on('click', '.dropdown-menu.hold-on-click', function(e) {
+        $('body').on('click', '.dropdown-menu > .hold-on-click', function(e) {
             e.stopPropagation();
         });
     };
@@ -1026,7 +1026,7 @@ var App = function() {
 
 jQuery(document).ready(function() {    
    App.init(); // init metronic core componets
-   console.log("gggg");
+   // console.log("gggg");
 });
 
 
@@ -1534,7 +1534,7 @@ var QuickSidebar = function () {
 
     jQuery(document).ready(function() {    
        QuickSidebar.init(); // init metronic core componets
-       console.log("menu-toggler");
+       // console.log("menu-toggler");
     });
 
 
@@ -1600,10 +1600,10 @@ var Layout = function () {
     var handleSidebarMenuActiveLink = function (mode, el, $state) {
         var url = location.hash.toLowerCase();
         var menu = $('.page-sidebar-menu');
-        console.log(menu);
-        console.log(menu.hasClass('page-sidebar-menu-hover-submenu'));
-        console.log('el');
-        console.log(el);
+        // console.log(menu);
+        // console.log(menu.hasClass('page-sidebar-menu-hover-submenu'));
+        // console.log('el');
+        // console.log(el);
 
         if (mode === 'click' || mode === 'set') {
             el = $(el);
