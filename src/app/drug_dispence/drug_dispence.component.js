@@ -62,7 +62,7 @@ angular
                     "doctorName" : "Dr.Yashvida Jayasekara",
                     "prescriptionId" : 999,
                     "patientName" : "GGWP",
-                    "isIssued" : "False",
+                    "isIssued" : "false",
                     "medDuration" : [
                         {
                             "duration" : "1 Week",
@@ -311,6 +311,7 @@ angular
                         $scope.outputText={
                             "drugName":drugs[x].name,
                             "price":"Out Of Stock",
+                            "prescriptionId":prescription._id
 
                         };
 
@@ -324,7 +325,8 @@ angular
 
                         $scope.outputText={
                             "drugName":drugs[x].name,
-                            "price":(TotalPrice*100 / 100).toFixed(2)
+                            "price":(TotalPrice*100 / 100).toFixed(2),
+                            "prescriptionId":prescription._id
                         };
                         $scope.msgArray.push($scope.outputText);
                     }
@@ -335,12 +337,6 @@ angular
                 //add two decimal places
                 $scope.billVal=( $scope.billVal*100 / 100).toFixed(2)
 
-                //=========================================update the status of the prescription==========================================
-                prescription.isIssued="true";
-
-                // $http.put(SETTINGS.SITE_URL+'/prescription/'+prescription._id,{"isIssued":"true"}).then(function (result) {
-                //     console.log(result);
-                // })
 
 
             }
@@ -349,6 +345,17 @@ angular
 
 
 
+            //----------------------------------------------------------------------Update Prescription---------------------
+
+            $scope.updatePrescription=function () {
+                //=========================================update the status of the prescription==========================================
+                prescription.isIssued="true";
+
+                // $http.put(SETTINGS.SITE_URL+'/prescription/'+prescription._id,{"isIssued":"true"}).then(function (result) {
+                //     console.log(result);
+                // })
+
+            }
 
         }
     });

@@ -1,8 +1,10 @@
-<div class="container">
 
-    <div class="page-header">
-        <h2 class="text-info">Drug Dispense</h2>
-    </div>
+<h1 class="page-title hb-page-title"> Drug Dispense
+    <small></small>
+</h1>
+
+<div class="content">
+
     <div class="well well-lg">
         <div class="container-fluid">
 
@@ -112,7 +114,8 @@
             <div class="col-md-12">
                     <!--<button class="btn btn-success" id="issueDrug" ng-click="issueDrug(prescription)" data-toggle="modal" data-target="#myModal">Issue Drugs</button>-->
 
-                <button type="button" class="btn btn-md blue" data-animation="am-fade-and-slide-top" data-template-url="app/drug_dispence/template/bill.html" bs-modal="modal" >Issue Drugs</button>
+                <button ng-disabled="prescription.isClicked ? true : false" type="button" class="btn btn-md blue" ng-click="issueDrug(prescription); prescription.isClicked = true">Issue Drugs</button>
+                <button ng-disabled="prescription.isClicked ? false : true" type="button" class="btn btn-md blue" data-animation="am-fade-and-slide-top" data-template-url="app/drug_dispence/template/bill.html" bs-modal="modal" >Show Bill</button>
 
                 </div>
         </div>
