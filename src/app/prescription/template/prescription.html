@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Prescription</title>
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>-->
 </head>
 
 <body>
@@ -49,11 +47,10 @@
                                 <span ng-show="$ctrl.medForm.docName.$invalid && $ctrl.onSubmitClicked" class="help-block help-block-error">This field is invalid.</span>
                                 <label for="form_control_1">Doctor's Name</label>
                             </div>
-                            <div class="form-group form-md-line-input has-info form-md-floating-label" ng-class="{ 'has-error' : $ctrl.medForm.presID.$invalid && $ctrl.onSubmitClicked}">
-                                <input type="text" class="form-control" id="form_control_1" ng-model="$ctrl.medset.prescriptionId" required>
-                                <span ng-show="$ctrl.medForm.presID.$invalid && $ctrl.onSubmitClicked" class="help-block help-block-error">This field is invalid.</span>
+                            <div class="form-group form-md-line-input has-error" ng-class="{ 'has-error' : $ctrl.medForm.PID.$invalid && $ctrl.onSubmitClicked}">
+                                <input type="text" class="form-control" disabled id="form_control_1" ng-model="$ctrl.medset.PID">
+                                <span ng-show="$ctrl.medForm.PID.$invalid && $ctrl.onSubmitClicked" class="help-block help-block-error">This field is invalid.</span>
                                 <label for="form_control_1">Prescription ID</label>
-                                <!--<span class="help-block">Some help goes here...</span>-->
                             </div>
                             <div class="form-group form-md-line-input has-info form-md-floating-label">
                                 <input ng-model="$ctrl.medset.patientName" type="text" class="form-control" id="form_control_1" required>
@@ -81,12 +78,12 @@
                                                     <th scope="col" style="width:450px !important"> Medicine Name </th>
                                                     <th scope="col"> Selected Time</th>
                                                     <th scope="col"> Quentity</th>
-                                                    <th scope="col"> Duration</th>
+                                                    <th scope="col"> Duration(Weeks)</th>
                                                     <th scope="col"> Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="medItem in $ctrl.tableMed track by $index">
+                                                <tr ng-repeat="medItem in $ctrl.itemTable track by $index">
                                                     <td>{{medItem.name}}</td>
                                                     <td>{{medItem.time}}</td>
                                                     <td>{{medItem.quentity}}</td>
@@ -107,23 +104,25 @@
                                     </div>
                                     <!--<input ng-model="$ctrl.mediName" id="medName" type="text" class="form-control input-xlarge input-inline" placeholder="Enter medicine name">-->
                                     <select id="selectedMedicine" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedMedicine">
-                                        <option disabled value="9999">Select edicine Name</option>
-                                        <option ng-repeat="pmedicine in $ctrl.prescriptionMedicine" value="{{pmedicine.id}}">{{pmedicine.name}}</option>
+                                        <option disabled value="9999">Select Medicine Name</option>
+                                        <option ng-repeat="pmedicine in $ctrl.prescriptionMedicine" value="{{pmedicine}}">{{pmedicine.name}}</option>
                                     </select>
                                     <select id="selectedTime" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedTime">
                                         <option disabled value="9999">Select Time</option>
-                                        <option ng-repeat="ptimes in $ctrl.prescriptionTime" value="{{ptimes.id}}">{{ptimes.name}}</option>                                       
+                                        <option ng-repeat="ptimes in $ctrl.prescriptionTime" value="{{ptimes.name}}">{{ptimes.name}}</option>                                       
                                     </select>
                                     <br></br>
                                     <select id="selectedQuentity" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedQuentity">
                                         <option disabled value="9999">Select Quentity</option>
+                                        <option value="0.5">0.5</option>
                                         <option value="1">1</option>
+                                        <option value="1.5">1.5</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                     </select>
                                     <select id="selectedDuration" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedDuration">
                                         <option disabled value="9999">Select Number of Weeks</option>
-                                        <option ng-repeat="pdurations in $ctrl.prescriptionDuration" value="{{pdurations.id}}">{{pdurations.name}}</option>
+                                        <option ng-repeat="pdurations in $ctrl.prescriptionDuration" value="{{pdurations.name}}">{{pdurations.name}}</option>
                                     </select>
                                     <br></br>
                                     <div>

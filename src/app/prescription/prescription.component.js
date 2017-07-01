@@ -6,15 +6,17 @@ angular
     .module('app')
     .component('prescriptionCom', {
         templateUrl: 'app/prescription/template/prescription.html',
-        controller: function ($log, $q, PrescriptionSDK, SweetAlert) {
+        controller: function ($log, $q, PrescriptionSDK, SweetAlert, StockSDK) {
             console.log("gg1");
             var self = this;
             self.isNewPrescriptionProcessing = false;
             self.medset = [];
             self.medset.docname = "Dr.Yashvida Jayasekara";
+            self.medset.PID = Date.now();
             self.selectedTime = String(9999);
             self.selectedQuentity = String(9999);
             self.selectedDuration = String(9999);
+            self.selectedMedicine = String(9999);
             self.tableMed = [];
 
             self.prescriptionTime = [];
@@ -24,7 +26,8 @@ angular
 
             //Adding Data to Table
             self.onItemAddClicked = function () {
-                if (self.mediName === null || angular.isUndefined(self.mediName) || self.selectedTime === String(9999)) {
+                if (self.selectedMedicine === String(9999) || self.selectedDuration === String(9999) || self.selectedTime === String(9999) ||
+                    self.selectedQuentity === String(9999)) {
                     SweetAlert.swal({
                         title: "Invalid fields",
                         type: "error",
@@ -35,9 +38,12 @@ angular
                     });
                     return;
                 }
-                self.tableMed.push({ name: self.mediName, time: self.selectedTime, quentity: self.selectedQuentity, duration: self.selectedDuration });
-                self.mediName = null;
-                self.selectedTime = String(9999);
+                var selectedMedicineTemp = angular.fromJson(self.selectedMedicine);
+                self.tableMed.push({
+                    name: selectedMedicineTemp.name, time: self.selectedTime,
+                    quentity: self.selectedQuentity, duration: self.selectedDuration, stock_id: selectedMedicineTemp.id
+                });
+                resetMedTableData();
             };
 
             //Delete Table raw
@@ -51,10 +57,10 @@ angular
                 $log.log(self.medForm)
                 self.medFormDB = {
                     doctorName: self.medset.docname,
-                    prescriptionId: self.medset.prescriptionId,
+                    prescriptionId: self.medset.PID,
                     patientName: self.medset.patientName,
-                    isIssued: "False",
-                    medDuration: self.tableMed
+                    isIssued: "false",
+                    medDuration: self.tableMed,
                 };
                 $log.log("self.medFormDB");
                 $log.log(self.medFormDB);
@@ -99,11 +105,12 @@ angular
 
                 return deferred.promise;
             }
+            getPresDurations();
 
             //Get Prescription Medicine
-            function getPresMedicines() {
+            function getDrugs() {
                 var deferred = $q.defer();
-                PrescriptionSDK.getPrescriptionMedicine().then(function (response) {
+                StockSDK.getDrugs().then(function (response) {
                     self.prescriptionMedicine = response.content;
                     $log.log("*********self.prescriptionMedicine********");
                     $log.log(self.prescriptionMedicine);
@@ -115,8 +122,7 @@ angular
 
                 return deferred.promise;
             }
-
-            getPresDurations();
+            getDrugs();
 
             //Adding Prescription Data to API
             function createPrescription(prescriptionObj) {
@@ -153,16 +159,28 @@ angular
                 return deferred.promise;
             }
 
+
+
             //Reset Prescription
             function resetPrescriptionFormData() {
                 self.medFormDB = [];
                 self.tableMed = [];
                 self.medset = [];
+                self.medset.PID = Date.now();
                 self.medset.duration = String(9999);
                 self.medset.docname = "Dr.Yashvida Jayasekara";
                 self.selectedTime = String(9999);
                 self.selectedQuentity = String(9999);
                 self.selectedDuration = String(9999);
+                self.selectedMedicine = String(9999);
+            }
+
+            //Reset Table
+            function resetMedTableData() {
+                self.selectedTime = String(9999);
+                self.selectedQuentity = String(9999);
+                self.selectedDuration = String(9999);
+                self.selectedMedicine = String(9999);
             }
 
         }

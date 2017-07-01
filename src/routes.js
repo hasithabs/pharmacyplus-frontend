@@ -68,6 +68,16 @@ function routesConfig($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
+    .state('app.order', {
+      url: '/order',
+      views: {
+        mainContent: {
+          component: 'orderCom'
+        }
+      }
+    })
+
     .state('app.prescription', {
         url: '/prescription',
         views: {

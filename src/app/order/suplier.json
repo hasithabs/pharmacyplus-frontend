@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Omak",
+        "id": 1,
+        "goods": [
+            {
+                "medName": "Pandol",
+                "itemPrice": 2
+            },
+            {
+                "medName": "Piriton",
+                "itemPrice": 2
+            },
+            {
+                "medName": "Aspirin",
+                "itemPrice": 2
+            },
+            {
+                "medName": "Parasitamol",
+                "itemPrice": 2
+            }
+        ]
+    },
+    {
+        "name": "Virtusa",
+        "id": 2,
+        "goods": [
+            {
+                "medName": "Postino2",
+                "itemPrice": 2
+            },
+            {
+                "medName": "Power Jesic",
+                "itemPrice": 2
+            },
+            {
+                "medName": "Disprine",
+                "itemPrice": 2
+            },
+            {
+                "medName": "Detol",
+                "itemPrice": 2
+            }
+        ]
+    }
+]
