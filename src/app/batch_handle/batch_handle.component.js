@@ -23,24 +23,24 @@ angular
 
             //drug category
             $scope.quantity="";
-            $scope.drugArray =[
-                {
-                    prescriptionId:1,
-                    category:{"prescriptionId":1,"name":"pain killers"},
-                    name:'Penadol'
-                },
-                {
-                    prescriptionId:2,
-                    category:{"prescriptionId":1,"name":"pain killers"},
-                    name:'piriton'
-                },
-                {
-                    prescriptionId:3,
-                    category:{"prescriptionId":1,"name":"hart killers"},
-                    name:'aspine'
-                }
-
-            ];
+            // $scope.drugArray =[
+            //     {
+            //         prescriptionId:1,
+            //         category:{"prescriptionId":1,"name":"pain killers"},
+            //         name:'Penadol'
+            //     },
+            //     {
+            //         prescriptionId:2,
+            //         category:{"prescriptionId":1,"name":"pain killers"},
+            //         name:'piriton'
+            //     },
+            //     {
+            //         prescriptionId:3,
+            //         category:{"prescriptionId":1,"name":"hart killers"},
+            //         name:'aspine'
+            //     }
+            //
+            // ];
 
             //creating unique elemets for categoryArray
             $scope.CategoryArray = [];

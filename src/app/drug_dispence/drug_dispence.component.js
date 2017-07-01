@@ -8,125 +8,125 @@ angular
 
             //-------------------------------------getting PRESCRIPTION data ----------------------------------------------------
 
-            $scope.prescriptionArray=[
-                {
-                    "prescriptionId":20,
-                    "patientName":"asun",
-                    "doctorName":"Madusanka",
-                    "isIssued":"false",
-                    "medDuration":[
-                        {
-                            "stock_id":1,
-                            "name":"piriton",
-                            "quentity" : "1",
-                            "time" : "3 Times per Day",
-                            "duration":"2 weeks"
-                        },
+            // $scope.prescriptionArray=[
+            //     {
+            //         "prescriptionId":20,
+            //         "patientName":"asun",
+            //         "doctorName":"Madusanka",
+            //         "isIssued":"false",
+            //         "medDuration":[
+            //             {
+            //                 "stock_id":1,
+            //                 "name":"piriton",
+            //                 "quentity" : "1",
+            //                 "time" : "3 Times per Day",
+            //                 "duration":"2 weeks"
+            //             },
+            //
+            //             {
+            //                 "stock_id":3,
+            //                 "name":"panadole",
+            //                 "quentity" : "1",
+            //                 "time" : "2 Times per Day",
+            //                 "duration":"5 weeks"
+            //             }
+            //         ]
+            //
+            //     },
+            //
+            //     {
+            //         "prescriptionId":40,
+            //         "patientName":"hhhh",
+            //         "doctorName":"kkkkkk",
+            //         "isIssued":"false",
+            //         "medDuration":[
+            //             {
+            //                 "stock_id":1,
+            //                 "name":"panadole",
+            //                 "quentity" : "1",
+            //                 "time" : "3 Times per Day",
+            //                 "duration":"5 weeks"
+            //             },
+            //
+            //             {
+            //                 "stock_id":3,
+            //                 "name":"panadole",
+            //                 "quentity" : "1",
+            //                 "time" : "1 Times per Day",
+            //                 "duration":"5 weeks"
+            //             }
+            //         ]
+            //
+            //     },
+            //     {
+            //         "doctorName" : "Dr.Yashvida Jayasekara",
+            //         "prescriptionId" : 999,
+            //         "patientName" : "GGWP",
+            //         "isIssued" : "false",
+            //         "medDuration" : [
+            //             {
+            //                 "duration" : "1 Week",
+            //                 "quentity" : "1",
+            //                 "time" : "1 Times per Day(Morning Only)",
+            //                 "name" : "gg1"
+            //             },
+            //             {
+            //                 "duration" : "2 Weeks",
+            //                 "quentity" : "2",
+            //                 "time" : "1 Times per Day(Night Only)",
+            //                 "name" : "gg2"
+            //             },
+            //             {
+            //                 "duration" : "2 Weeks",
+            //                 "quentity" : "1",
+            //                 "time" : "1 Times per Day",
+            //                 "name" : "gg3"
+            //             },
+            //             {
+            //                 "duration" : "2 Weeks",
+            //                 "quentity" : "1",
+            //                 "time" : "1 Times per Day",
+            //                 "name" : "gg4"
+            //             }
+            //         ]
+            //     }
+            //
+            // ];
 
-                        {
-                            "stock_id":3,
-                            "name":"panadole",
-                            "quentity" : "1",
-                            "time" : "2 Times per Day",
-                            "duration":"5 weeks"
-                        }
-                    ]
-
-                },
-
-                {
-                    "prescriptionId":40,
-                    "patientName":"hhhh",
-                    "doctorName":"kkkkkk",
-                    "isIssued":"false",
-                    "medDuration":[
-                        {
-                            "stock_id":1,
-                            "name":"panadole",
-                            "quentity" : "1",
-                            "time" : "3 Times per Day",
-                            "duration":"5 weeks"
-                        },
-
-                        {
-                            "stock_id":3,
-                            "name":"panadole",
-                            "quentity" : "1",
-                            "time" : "1 Times per Day",
-                            "duration":"5 weeks"
-                        }
-                    ]
-
-                },
-                {
-                    "doctorName" : "Dr.Yashvida Jayasekara",
-                    "prescriptionId" : 999,
-                    "patientName" : "GGWP",
-                    "isIssued" : "False",
-                    "medDuration" : [
-                        {
-                            "duration" : "1 Week",
-                            "quentity" : "1",
-                            "time" : "1 Times per Day(Morning Only)",
-                            "name" : "gg1"
-                        },
-                        {
-                            "duration" : "2 Weeks",
-                            "quentity" : "2",
-                            "time" : "1 Times per Day(Night Only)",
-                            "name" : "gg2"
-                        },
-                        {
-                            "duration" : "2 Weeks",
-                            "quentity" : "1",
-                            "time" : "1 Times per Day",
-                            "name" : "gg3"
-                        },
-                        {
-                            "duration" : "2 Weeks",
-                            "quentity" : "1",
-                            "time" : "1 Times per Day",
-                            "name" : "gg4"
-                        }
-                    ]
-                }
-
-            ];
-
-            // $http.get(SETTINGS.SITE_URL+'/prescription/').then(function(result){
-            //     console.log('prescription Data'+result.data.content);
-            //     $scope.prescriptionArray=result.data.content;
-            // });
+            $http.get(SETTINGS.SITE_URL+'/prescription/').then(function(result){
+                console.log('prescription Data'+result.data.content);
+                $scope.prescriptionArray=result.data.content;
+            });
 
             //------------------------------------------------------------------------------------------------------------------------------
 
             //-----------------------------------------------getting STOCK data--------------------------------------------------------------
             $scope.stockArray =[];
 
-            $scope.stockArray =[
-                {
-                    prescriptionId:1,
-                    category:'pain killers',
-                    name:'panadol',
-                    price:2,
-                    reorderlevel:50,
-                    type:"tablet"
-                },
-                {
-                    prescriptionId:3,
-                    category:'pain killers',
-                    name:'piriton',
-                    price:5,
-                    reorderlevel:50,
-                    type:"tablet"
-                },
+            // $scope.stockArray =[
+            //     {
+            //         prescriptionId:1,
+            //         category:'pain killers',
+            //         name:'panadol',
+            //         price:2,
+            //         reorderlevel:50,
+            //         type:"tablet"
+            //     },
+            //     {
+            //         prescriptionId:3,
+            //         category:'pain killers',
+            //         name:'piriton',
+            //         price:5,
+            //         reorderlevel:50,
+            //         type:"tablet"
+            //     },
+            //
+            // ];
 
-            ];
-
-            // $http.get('http://localhost/stock/').then(function(result){
-            //     console.log('stock Data'+result.data.content);
-            //      $scope.stockArray=result.data.content;
-            // });
+            $http.get('http://localhost/stock/').then(function(result){
+                console.log('stock Data'+result.data.content);
+                 $scope.stockArray=result.data.content;
+            });
 
             //-------------------------------------------------------------------------------------------------------------------------------
 
@@ -193,7 +193,7 @@ angular
 
                             var dayValue = parseInt(drugs[x].time.split(" ")[0]);
                             var weeks = parseInt(drugs[x].duration.split(" ")[0]);
-                            var quantity = parseInt(drugs[x].quentity);
+                            var quantity = parseFloat(drugs[x].quentity);              //**//
 
 
                             //calculate quantity
@@ -311,6 +311,7 @@ angular
                         $scope.outputText={
                             "drugName":drugs[x].name,
                             "price":"Out Of Stock",
+                            "prescriptionId":prescription._id
 
                         };
 
@@ -324,7 +325,8 @@ angular
 
                         $scope.outputText={
                             "drugName":drugs[x].name,
-                            "price":(TotalPrice*100 / 100).toFixed(2)
+                            "price":(TotalPrice*100 / 100).toFixed(2),
+                            "prescriptionId":prescription._id
                         };
                         $scope.msgArray.push($scope.outputText);
                     }
@@ -335,18 +337,54 @@ angular
                 //add two decimal places
                 $scope.billVal=( $scope.billVal*100 / 100).toFixed(2)
 
-                //=========================================update the status of the prescription==========================================
-                prescription.isIssued="true";
-
-                // $http.put(SETTINGS.SITE_URL+'/prescription/'+prescription._id,{"isIssued":"true"}).then(function (result) {
-                //     console.log(result);
-                // })
 
 
             }
 
             //-------------------------------------------------------------------------------------------------------------------------------
 
+
+
+            //----------------------------------------------------------------------Update Prescription---------------------
+
+            $scope.updatePrescription=function (id) {
+                //=========================================update the status of the prescription==========================================
+                //prescription.isIssued="true";
+
+                $http.put(SETTINGS.SITE_URL+'/prescription/'+id,{"isIssued":"true"}).then(function (result) {
+                    console.log(result);
+                })
+
+            }
+
+
+            //print bill
+            $scope.printBill= function (payments,total,name) {
+
+                var doc = new jsPDF();
+
+
+                payments.forEach(function(drugDispence, i){
+                    doc.setFont('courier');
+                    doc.setFontType('normal');
+                    doc.text(20, 40 + (i * 10),drugDispence.drugName+"              Rs."+drugDispence.price);
+
+                });
+
+                doc.setFont('courier');
+                doc.setFontType('bolditalic');
+                doc.setTextColor(0, 255, 0);
+                doc.text(20, 30 ,"Total Value:  Rs."+total );
+
+                doc.setFontSize(22);
+                doc.setFont('helvetica');
+                doc.setFontType('bold');
+                doc.setTextColor(100);
+                doc.text(20, 10,"Prescription Bill for "+name )
+
+                doc.save(name+'.pdf');
+
+            }
 
 
 
