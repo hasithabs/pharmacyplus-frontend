@@ -359,6 +359,7 @@ angular
 
 
             //print bill
+            //jsPDF added as a bower component --> bower install jspdf
             $scope.printBill= function (payments,total,name) {
 
                 var doc = new jsPDF();
