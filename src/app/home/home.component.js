@@ -1966,9 +1966,6 @@ var Layout = function () {
                 if (body.hasClass("page-sidebar-fixed")) {
                     sidebarMenu.trigger("mouseleave");
                 }
-                if (Cookies) {
-                    Cookies.set('sidebar_closed', '1');
-                }
             }
 
             $(window).trigger('resize');
