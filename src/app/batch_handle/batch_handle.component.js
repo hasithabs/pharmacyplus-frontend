@@ -12,17 +12,18 @@ angular
 
             }
 
-
+            $scope.drugArray=[];
             $http.get(SETTINGS.SITE_URL+'/stock/').then(function(result){
 
                 console.log(result.data.content);
-                //  $scope.drugArray=result.data;
+                 $scope.drugArray=result.data.content;
 
             });
 
 
             //drug category
             $scope.quantity="";
+
             // $scope.drugArray =[
             //     {
             //         prescriptionId:1,
