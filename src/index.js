@@ -1,5 +1,5 @@
 angular
-  .module('app', ['ui.router', 'core.service', 'core.sdk', 'core.directive', 'ngAnimate', 'mgcrea.ngStrap', 'oitozero.ngSweetAlert', 'blockUI', 'angular-loading-bar', 'datatables', 'datatables.options', 'datatables.bootstrap', 'ui-notification'])
+  .module('app', ['ui.router', 'core.service', 'core.sdk', 'core.directive', 'ngAnimate', 'mgcrea.ngStrap', 'oitozero.ngSweetAlert', 'blockUI', 'angular-loading-bar', 'datatables', 'datatables.options', 'datatables.bootstrap', 'ui-notification', 'angularMoment', 'moment-picker'])
   .config(function(NotificationProvider) {
         NotificationProvider.setOptions({
             delay: 10000,

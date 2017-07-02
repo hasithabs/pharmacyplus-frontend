@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prescription</title>
+</head>
+
+<body>
+    <div class="row">
+        <!-- BEGIN Prescription Form-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-red-sunglo">
+                    <i class="icon-settings font-red-sunglo"></i>
+                    <span class="caption-subject bold uppercase">Prescription</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="javascript:;">
+                                <i class="fa fa-pencil"></i> Edit </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                <i class="fa fa-trash-o"></i> Delete </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                <i class="fa fa-ban"></i> Ban </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a href="javascript:;"> Make admin </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form role="form" name="$ctrl.medForm">
+                    <div class="form-body">
+                        <div class="form-body">
+                            <div class="form-group form-md-line-input has-error" ng-class="{ 'has-error' : $ctrl.medForm.docName.$invalid && $ctrl.onSubmitClicked}">
+                                <input type="text" class="form-control" disabled id="form_control_1" ng-model="$ctrl.medset.docname">
+                                <span ng-show="$ctrl.medForm.docName.$invalid && $ctrl.onSubmitClicked" class="help-block help-block-error">This field is invalid.</span>
+                                <label for="form_control_1">Doctor's Name</label>
+                            </div>
+                            <div class="form-group form-md-line-input has-error" ng-class="{ 'has-error' : $ctrl.medForm.PID.$invalid && $ctrl.onSubmitClicked}">
+                                <input type="text" class="form-control" disabled id="form_control_1" ng-model="$ctrl.medset.PID">
+                                <span ng-show="$ctrl.medForm.PID.$invalid && $ctrl.onSubmitClicked" class="help-block help-block-error">This field is invalid.</span>
+                                <label for="form_control_1">Prescription ID</label>
+                            </div>
+                            <div class="form-group form-md-line-input has-info form-md-floating-label">
+                                <input ng-model="$ctrl.medset.patientName" type="text" class="form-control" id="form_control_1" required>
+                                <label for="form_control_1">Patient Name</label>
+                                <!--<span class="help-block">Some help goes here...</span>-->
+                            </div>
+
+                            <!-- BEGIN SAMPLE TABLE PORTLET-->
+                            <div class="portlet box purple">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-cogs"></i>Added Medicines </div>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="collapse"> </a>
+                                        <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                        <a href="javascript:;" class="reload"> </a>
+                                        <a href="javascript:;" class="remove"> </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="table-scrollable">
+                                        <table class="table table-striped table-bordered table-hover" id="list">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col" style="width:450px !important"> Medicine Name </th>
+                                                    <th scope="col"> Selected Time</th>
+                                                    <th scope="col"> Quentity</th>
+                                                    <th scope="col"> Duration(Weeks)</th>
+                                                    <th scope="col"> Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="medItem in $ctrl.itemTable track by $index">
+                                                    <td>{{medItem.name}}</td>
+                                                    <td>{{medItem.time}}</td>
+                                                    <td>{{medItem.quentity}}</td>
+                                                    <td>{{medItem.duration}}</td>
+                                                    <td><button ng-click="$ctrl.onDeleteClicked($index)" class="btn btn-danger input-inline">Delete</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END SAMPLE TABLE PORTLET-->
+                            <div>
+                                <div class="form-group form-md-line-input has-info form-md-floating-label">
+                                    <div>
+                                        <label for="form_control_1">Medicine</label>
+                                        <br></br>
+                                    </div>
+                                    <!--<input ng-model="$ctrl.mediName" id="medName" type="text" class="form-control input-xlarge input-inline" placeholder="Enter medicine name">-->
+                                    <select id="selectedMedicine" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedMedicine">
+                                        <option disabled value="9999">Select Medicine Name</option>
+                                        <option ng-repeat="pmedicine in $ctrl.prescriptionMedicine" value="{{pmedicine}}">{{pmedicine.name}}</option>
+                                    </select>
+                                    <select id="selectedTime" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedTime">
+                                        <option disabled value="9999">Select Time</option>
+                                        <option ng-repeat="ptimes in $ctrl.prescriptionTime" value="{{ptimes.name}}">{{ptimes.name}}</option>                                       
+                                    </select>
+                                    <br></br>
+                                    <select id="selectedQuentity" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedQuentity">
+                                        <option disabled value="9999">Select Quentity</option>
+                                        <option value="0.5">0.5</option>
+                                        <option value="1">1</option>
+                                        <option value="1.5">1.5</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                    <select id="selectedDuration" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedDuration">
+                                        <option disabled value="9999">Select Number of Weeks</option>
+                                        <option ng-repeat="pdurations in $ctrl.prescriptionDuration" value="{{pdurations.name}}">{{pdurations.name}}</option>
+                                    </select>
+                                    <br></br>
+                                    <div>
+                                        <button id="addDiv" class="btn btn-danger" ng-click="$ctrl.onItemAddClicked()">Add Medicine</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button ng-click="$ctrl.onSubmitClicked()" ng-disabled="$ctrl.isNewPrescriptionProcessing" class="btn green input-inline">Submit Prescription</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+</body>
+
+</html>

@@ -121,6 +121,9 @@ body {
     opacity: 0 !important;
     transform: scale(2.5); } }
 
+.input-inline {
+  display: inline !important; }
+
 .form-group.form-md-line-input {
   position: relative;
   margin: 0 0 35px 0;

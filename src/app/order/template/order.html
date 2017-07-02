@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prescription</title>
+</head>
+
+<body>
+
+    <div class="row">
+        <!-- BEGIN Prescription Form-->
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption font-red-sunglo">
+                    <i class="icon-settings font-red-sunglo"></i>
+                    <span class="caption-subject bold uppercase">Purchase Order</span>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="javascript:;">
+                                <i class="fa fa-pencil"></i> Edit </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                <i class="fa fa-trash-o"></i> Delete </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                <i class="fa fa-ban"></i> Ban </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a href="javascript:;"> Make admin </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <form role="form" name="$ctrl.orderForm">
+                    <div class="form-body">
+                        <div class="col-md-12">
+                            </br>
+                            <div class="col-md-3">
+                                <label>Order Date</label>
+                            </div>
+                            <div class="col-md-3">
+                                <div>
+                                    <!--<input moment-picker="$ctrl.todayDate" class="form-control" min-date="$ctrl.todayDate" max-date="$ctrl.todayDate" format="DD/MM/YYYY" max-view="day" ng-model="$ctrl.orderDate">-->
+                                    <input type="text" class="form-control" ng-model="$ctrl.orderDate" id="orderDate" disabled>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-3">
+                                <label>Order ID</label>
+                            </div>
+                            <div class="col-md-3">
+                                <div>
+                                    <input type="text" class="form-control" ng-model="$ctrl.orderID" id="orderNumber" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Location</label>
+                            </div>
+                            <div class="col-md-3">
+                                <div>
+                                    <input type="text" class="form-control" ng-model="$ctrl.orderLocation" id="orderLocation" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Delivery Date</label>
+                            </div>
+                            <div class="col-md-3">
+                                <div>
+                                    <input moment-picker="$ctrl.orderDate" class="form-control" min-date="$ctrl.deliveryDate" format="DD/MM/YYYY" max-view="day"
+                                        ng-model="$ctrl.deliveryDate" required>
+                                    <!--<input type="text" class="form-control" ng-model="$ctrl.orderDate" id="orderDate" disabled>-->
+
+                                </div>
+                            </div></br></br></br></br></br>
+
+                            <div class="form-group form-md-line-input has-info">
+                                <select class="form-control" id="form_control_1" ng-model="$ctrl.selectedSupplier">
+                                        <option disabled value="9999">Select a Supplire</option>
+                                        <option ng-repeat="supplier in $ctrl.suppliers" value="{{supplier.id}}">{{supplier.name}}</option>
+                                                </select>
+                                <label for="form_control_1">Supplier Name</label>
+                            </div>
+                        </div>
+                        </br></br></br></br></br></br></br></br></br></br>
+
+                        <!-- BEGIN SAMPLE TABLE PORTLET-->
+                        <div class="portlet box purple">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-cogs"></i>Added Items</div>
+                                <div class="tools">
+                                    <a href="javascript:;" class="collapse"> </a>
+                                    <a href="#portlet-config" data-toggle="modal" class="config"> </a>
+                                    <a href="javascript:;" class="reload"> </a>
+                                    <a href="javascript:;" class="remove"> </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="table-scrollable">
+                                    <table class="table table-striped table-bordered table-hover" id="list">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"> Item ID</th>
+                                                <th scope="col" style="width:450px !important"> Item Name </th>
+                                                <th scope="col"> Quentity</th>
+                                                <th scope="col"> Price (Rs)</th>
+                                                <th scope="col"> Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="medItem in $ctrl.tableOder track by $index">
+                                                <td>{{medItem.id}}</td>
+                                                <td>{{medItem.mediName}}</td>
+                                                <td>{{medItem.quentity}}</td>
+                                                <td>{{medItem.itemPrice}}</td>
+                                                <td><button ng-click="$ctrl.onDeleteClicked($index)" class="btn btn-danger input-inline">Remove</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END SAMPLE TABLE PORTLET-->
+                        <div>
+                            <div class="form-group form-md-line-input has-info form-md-floating-label">
+                                <div>
+                                    <label for="form_control_1">Item Details</label>
+                                    <br></br>
+                                </div>
+                                <!--<input ng-model="$ctrl.mediName" id="medName" type="text" class="form-control input-xlarge input-inline" placeholder="Enter medicine name">-->
+                                <select id="itemList" class="form-control input-xlarge input-inline" ng-model="$ctrl.selectedItemName">
+                                        <option disabled value="9999">Select Item Name</option>
+                                       <option ng-repeat="sItem in $ctrl.suppliers[$ctrl.selectedSupplier-1].goods" value="{{sItem}}">{{sItem.medName}}</option>
+                                    </select>
+                                    <input ng-model="$ctrl.squentity" id="medName" type="text" class="form-control input-xlarge input-inline" placeholder="Enter Quentity" required>
+                                    </br></br>
+                                <div>
+                                    <button id="addDiv" class="btn btn-danger input-inline" ng-click="$ctrl.onItemAddClicked()">Add Item</button>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Ordered Items Net Price (Rs)</label>
+                            </div>
+                            <div class="col-md-3">
+                                <div>
+                                    <input type="text" class="form-control" ng-model="$ctrl.orderNetPrice" id="orderNetPrice" disabled>
+                                </div>
+                            </div>
+                            </br></br></br>
+                            <div>
+                                <button ng-click="$ctrl.onPurchaseOrderClicked()" ng-disabled="$ctrl.isNewPrescriptionProcessing" class="btn green input-inline">Purchase Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+</body>
+
+</html>

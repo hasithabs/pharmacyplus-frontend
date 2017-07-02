@@ -2,6 +2,7 @@ angular
   .module('core.sdk')
   .service('StockSDK',
     function ($log, $q, StockAPI) {
+      
       this.getDrugs = function (drugId) {
         var deferred = $q.defer();
         StockAPI.stockDrug().get({id: drugId}).$promise.then(function (response) {
