@@ -8,24 +8,25 @@ angular
 
     $rootScope.newNotification = [];
     var tempNewNotification = [];
-    var nCount = 0;
+    $rootScope.rootNotiCount = 0;
     function getNewNotificationsRealtime() {
       var deferred = $q.defer();
       NotificationSDK.getNewNotifications().then(function (response) {
         $log.log(response);
         $rootScope.newNotification = response.content;
-        if (nCount === 0) {
+        if ($rootScope.rootNotiCount === 0) {
           angular.copy($rootScope.newNotification, tempNewNotification);
           if (tempNewNotification.length > 0) {
             Notification.success('You have unread notification(s)');
           }
-          nCount++;
+          $rootScope.rootNotiCount++;
         }
         for (var c = 0; c < $rootScope.newNotification.length; c++) {
           if (angular.isDefined(tempNewNotification[c]) && $rootScope.newNotification[c].id === tempNewNotification[c].id) {
             continue;
           }
           Notification.success('You have unread notification(s)');
+          break;
         }
         deferred.resolve(response);
       }, function (error) {

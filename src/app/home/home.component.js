@@ -2,8 +2,12 @@ angular
   .module('app')
   .component('homeCom', {
     templateUrl: 'app/home/template/home.html',
-    controller: function (NotificationCenter) {
-        NotificationCenter.getNewNotificationsRealtime();
+    controller: function ($interval, NotificationCenter) {
+
+      $interval(function () {
+          NotificationCenter.getNewNotificationsRealtime();
+      }, 15000);
+
       // var self = this;
       // 
       // NotificationCenter

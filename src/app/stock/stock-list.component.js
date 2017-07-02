@@ -2,7 +2,7 @@ angular
   .module('app')
   .component('stockListCom', {
     templateUrl: 'app/stock/template/stock-list.html',
-    controller: function ($rootScope, $log, $state, $q, $interval, StockSDK, NotificationSDK, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions, blockUI, SweetAlert, Notification) {
+    controller: function ($rootScope, $log, $state, $q, $interval, StockSDK, NotificationSDK, DTOptionsBuilder, DTColumnDefBuilder, DTColumnBuilder, DTDefaultOptions, SweetAlert, Notification) {
       var self = this;
       self.drugs = [];
 
@@ -238,6 +238,7 @@ angular
             }
           }
           nCount = 0;
+          $rootScope.rootNotiCount = 0;
           $log.log(response);
           deferred.resolve(response);
         }, function (error) {
