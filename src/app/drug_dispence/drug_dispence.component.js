@@ -123,9 +123,10 @@ angular
             //
             // ];
 
-            $http.get('http://localhost/stock/').then(function(result){
+            $http.get(SETTINGS.SITE_URL+'/stock/').then(function(result){
                 console.log('stock Data'+result.data.content);
                  $scope.stockArray=result.data.content;
+                 console.log($scope.stockArray);
             });
 
             //-------------------------------------------------------------------------------------------------------------------------------
@@ -152,6 +153,7 @@ angular
                 $scope.billVal=0;
 
                 var drugs = prescription.medDuration;
+                console.log(drugs);
 
                 //get each drug
                 for(var x=0; x<drugs.length;x++){
@@ -172,7 +174,7 @@ angular
                     for(var i=0;i<$scope.stockArray.length;i++){
 
                         //check weather the given drug is available in the stock table
-                        if($scope.stockArray[i].prescriptionId==drugs[x].stock_id){
+                        if($scope.stockArray[i].id==drugs[x].stock_id){
 
                             found=true;
                             type=$scope.stockArray[i].type;
@@ -249,7 +251,7 @@ angular
                                     console.log('partial batches should be deleted');
                                     //delete batches that are *****empty******--------that mean no remaining medDuration in batch--------------
                                     for(var y=0;y<h;y++){
-                                        $http.delete('http://localhost:9000/batches/'+sortedArray[y]._id).then(function (result) {
+                                        $http.delete('http://13.59.166.12:8080/batches/'+sortedArray[y]._id).then(function (result) {
                                             // console.log('batch deleted');
                                         });
                                     }
@@ -311,7 +313,7 @@ angular
                         $scope.outputText={
                             "drugName":drugs[x].name,
                             "price":"Out Of Stock",
-                            "prescriptionId":prescription._id
+                            "prescriptionId":prescription.prescriptionId
 
                         };
 
@@ -326,7 +328,7 @@ angular
                         $scope.outputText={
                             "drugName":drugs[x].name,
                             "price":(TotalPrice*100 / 100).toFixed(2),
-                            "prescriptionId":prescription._id
+                            "prescriptionId":prescription.prescriptionId
                         };
                         $scope.msgArray.push($scope.outputText);
                     }
@@ -381,9 +383,9 @@ angular
                 doc.setFont('helvetica');
                 doc.setFontType('bold');
                 doc.setTextColor(100);
-                doc.text(20, 10,"Prescription Bill for "+name )
+                doc.text(20, 10,"Prescription Bill ")
 
-                doc.save(name+'.pdf');
+                doc.save('bill.pdf');
 
             }
 

@@ -142,7 +142,7 @@
                                         <option disabled value="9999">Select Item Name</option>
                                        <option ng-repeat="sItem in $ctrl.suppliers[$ctrl.selectedSupplier-1].goods" value="{{sItem}}">{{sItem.medName}}</option>
                                     </select>
-                                    <input ng-model="$ctrl.squentity" id="medName" type="text" class="form-control input-xlarge input-inline" placeholder="Enter Quentity" required>
+                                    <input ng-model="$ctrl.squentity" id="medName" type="number" class="form-control input-xlarge input-inline" placeholder="Enter Quentity" required>
                                     </br></br>
                                 <div>
                                     <button id="addDiv" class="btn btn-danger input-inline" ng-click="$ctrl.onItemAddClicked()">Add Item</button>

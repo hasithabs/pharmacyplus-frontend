@@ -14,10 +14,32 @@ angular
 
             $scope.drugArray=[];
             $http.get(SETTINGS.SITE_URL+'/stock/').then(function(result){
-
-                console.log(result.data.content);
+                console.log(result);
+                console.log('gggggs'+result.data.content);
                  $scope.drugArray=result.data.content;
+$scope.CategoryArray = [];
+            $scope.uniqueCategory=[];
+            for(var i=0;i<$scope.drugArray.length;i++){
+                $scope.CategoryArray.push($scope.drugArray[i].category.name); 
+                //--------*******drugCategory Used*****---------//
 
+            }
+            $scope.uniqueCategory = $scope.CategoryArray.filter(function(elem, index, self) {
+                return index == self.indexOf(elem);
+            });
+            //----------------------------------------------
+
+            $scope.makeDrugName=function (category) {
+                $scope.DrugNameArray=[];
+
+                for(var i=0;i<$scope.drugArray.length;i++)
+                {
+                    if($scope.drugArray[i].category.name == category){            //--------*******drugCategory Used*****---------//
+                        $scope.DrugNameArray.push($scope.drugArray[i].name); //--------*******drugName Used*****---------//
+
+                    }
+                }
+            }
             });
 
 
@@ -44,28 +66,7 @@ angular
             // ];
 
             //creating unique elemets for categoryArray
-            $scope.CategoryArray = [];
-            $scope.uniqueCategory=[];
-            for(var i=0;i<$scope.drugArray.length;i++){
-                $scope.CategoryArray.push($scope.drugArray[i].category.name); //--------*******drugCategory Used*****---------//
-            }
 
-            $scope.uniqueCategory = $scope.CategoryArray.filter(function(elem, index, self) {
-                return index == self.indexOf(elem);
-            });
-            //----------------------------------------------
-
-            $scope.makeDrugName=function (category) {
-                $scope.DrugNameArray=[];
-
-                for(var i=0;i<$scope.drugArray.length;i++)
-                {
-                    if($scope.drugArray[i].category.name == category){            //--------*******drugCategory Used*****---------//
-                        $scope.DrugNameArray.push($scope.drugArray[i].name); //--------*******drugName Used*****---------//
-
-                    }
-                }
-            }
 
 
             //count function
@@ -120,7 +121,7 @@ angular
                 //getting StockId from array
                 for(var i=0;i< $scope.drugArray.length;i++){
                     if( $scope.drugArray[i].category.name==drugData.category && $scope.drugArray[i].name==drugData.name) { //--------*******drugCategory and name Used*****---------//
-                        $scope.stockid=$scope.drugArray[i].prescriptionId;  //--------*******stock_id Used*****---------//
+                        $scope.stockid=$scope.drugArray[i].id;  //--------*******stock_id Used*****---------//
                         console.log($scope.stockid);
                     }
                 }
